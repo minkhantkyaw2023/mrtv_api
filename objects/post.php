@@ -52,12 +52,12 @@ class Post
         $stmt->execute();
         return $stmt;
     }
-//to retrieve total count of news
+    //to retrieve total count of news
     public function get_total_catlist($categoryid)
     {
         $query = "SELECT COUNT(*) as totalrecords FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
         WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$categoryid";
-
+      
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
@@ -68,12 +68,12 @@ class Post
 
         return $row['totalrecords'];
     }
-//to retrieve news
-    public function get_content_category($begin, $row_per_page, $program_id)
+    //to retrieve news
+    public function get_content_category($begin, $row_per_page, $categoryid)
     {
 
         $query = "SELECT nd.nid, nd.title FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
-        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$program_id ORDER BY nd.created DESC LIMIT $begin,$row_per_page";
+        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$categoryid ORDER BY nd.created DESC LIMIT $begin,$row_per_page";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -84,7 +84,7 @@ class Post
     }
 
     //radio program
-    //get radio image file
+    //get radio image files
     public function get_radio_img($nid)
     {
         $query = "SELECT fm.filename FROM `node_field_data` as nd, `node__field_radio_image` as fri, `file_managed` as fm 
@@ -100,7 +100,7 @@ class Post
             return null;
         }
     }
-//radio audio file
+    //radio audio files
     public function get_radio_audio($nid)
     {
 
@@ -117,7 +117,7 @@ class Post
             return null;
         }
     }
-
+    //to retrieve body
     public function get_body($nid)
     {
         $query = "SELECT nb.body_value as body FROM `node__body` as nb  WHERE nb.entity_id = $nid";
@@ -133,6 +133,7 @@ class Post
         }
     }
 
+    //to retrieve radio programs
     public function get_radio_program()
     {
         $query = "SELECT tid,name FROM taxonomy_term_field_data WHERE vid='radio_program_type'";
@@ -143,6 +144,8 @@ class Post
         return $stmt;
     }
 
+    //schedule
+    //to retrieve schedule category
     public function get_schedule_tags()
     {
         $query = "SELECT tid,name  FROM `taxonomy_term_field_data` WHERE vid='schedule_tags'";
@@ -153,6 +156,7 @@ class Post
         return $stmt;
     }
 
+    //to retrieve schedule image
     public function get_schedule_img($nid)
     {
 
@@ -170,6 +174,8 @@ class Post
         }
     }
 
+    //nrc
+    //to retrieve nrc total count
     public function get_nrc_total()
     {
         $query = "SELECT COUNT(*) AS totalrecords FROM `node_field_data` WHERE type='nrc_program'";
@@ -184,6 +190,7 @@ class Post
         return $row['totalrecords'];
     }
 
+    //to retrieve nrc id and title
     public function get_nrc($begin, $row_per_page)
     {
         $query = "SELECT nid,title  FROM `node_field_data` WHERE `type`='nrc_program' ORDER BY created DESC LIMIT $begin,$row_per_page";
@@ -195,6 +202,7 @@ class Post
         return $stmt;
     }
 
+    //to retrieve nrc image
     public function get_nrc_image($nid)
     {
         $query = "SELECT fm.filename as filename FROM `node_field_data` as nd, `node__field_nrc_image` as ni, `file_managed` as fm 
@@ -211,6 +219,9 @@ class Post
         }
     }
 
+
+    //tv series
+    //to retrieve tv-series total count
     public function get_tv_series_total()
     {
 
@@ -227,6 +238,7 @@ class Post
         return $row['totalrecords'];
     }
 
+    //to retrieve tv-series id and title
     public function get_tv_series($begin, $row_per_page)
     {
         $query = "SELECT nid,title  FROM `node_field_data` WHERE `type`='program' ORDER BY created DESC LIMIT $begin,$row_per_page";
@@ -238,6 +250,7 @@ class Post
         return $stmt;
     }
 
+    //to retrieve tv-series image
     public function get_tv_series_image($nid)
     {
         $query = "SELECT fm.filename as filename FROM `node_field_data` as nd, `node__field_program_image` as ni, `file_managed` as fm 

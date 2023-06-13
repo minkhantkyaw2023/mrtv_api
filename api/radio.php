@@ -40,7 +40,7 @@ if ($pageno > $total_pages) {
   );
 } else {
   //to retrieve radio news list by program
-  $post_sql = $post->get_content_category($begin, $row_per_page, $programid);
+  $post_sql = $post->get_content_category($begin, $row_per_page, $categoryid);
   $post_num = $post_sql->rowCount();
   if ($post_num > 0) // check post
   {

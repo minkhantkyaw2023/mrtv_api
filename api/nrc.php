@@ -9,7 +9,6 @@ $post = new Post($db);
 $post_arr = array();
 $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
-$categoryid = isset($data->categoryid) ? $data->categoryid : '';
 
 //for pagination
 $pageno = isset($data->pageno) ? $data->pageno : "1";
@@ -89,8 +88,8 @@ if ($pageno > $total_pages) {
       ),
       "records" => [],
       "error" => array(
-      "code" => "error",
-      "detail" => "Not Found"
+        "code" => "error",
+        "detail" => "Not Found"
       )
     );
   }

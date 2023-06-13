@@ -9,11 +9,11 @@ $post = new Post($db);
 $post_arr = array();
 $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
-$categoryid = isset($data->categoryid) ? $data->categoryid : '';
+$category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 
 //for pagination
 $pageno = isset($data->pageno) ? $data->pageno : "1";
-$total_records = $post->get_total_catlist($categoryid);
+$total_records = $post->get_total_catlist($category_id);
 $total_pages = 1;
 $begin = 0;
 $row_per_page = 0;
@@ -40,7 +40,7 @@ if ($pageno > $total_pages) {
   );
 } else {
   //to retrieve radio news list by program
-  $post_sql = $post->get_content_category($begin, $row_per_page, $categoryid);
+  $post_sql = $post->get_content_category($begin, $row_per_page, $category_id);
   $post_num = $post_sql->rowCount();
   if ($post_num > 0) // check post
   {

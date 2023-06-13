@@ -18,7 +18,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -36,7 +36,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -57,7 +57,7 @@ class Post
     {
         $query = "SELECT COUNT(*) as totalrecords FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
         WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$categoryid";
-      
+
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
@@ -94,7 +94,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -111,7 +111,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -167,7 +167,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -212,7 +212,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;
@@ -260,7 +260,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = "https://mrtv.gov.mm/" . $row['filename'];
+            $filename = URL . $row['filename'];
             return $filename;
         } else {
             return null;

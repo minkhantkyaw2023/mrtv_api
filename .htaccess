@@ -1,15 +1,14 @@
 RewriteEngine On
-RewriteRule ^posts$ api/news.php [L]
 #for removing all php file extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^category_list api/category_list.php [NC,L]
-RewriteRule ^about_us api/about_us.php [NC,L]
-RewriteRule ^tender api/tender.php [NC,L]
-RewriteRule ^get_bookmarks api/get_bookmarks.php [NC,L]
-RewriteRule ^get_questions api/get_questions.php [NC,L]
-RewriteRule ^get_survey_questions api/get_surveys.php [NC,L]
-RewriteRule ^contact_us api/contact_us.php [NC,L]
-RewriteRule ^gallery api/read_gallery.php [NC,L]
+RewriteRule ^category_list$ api/category_list.php [NC,L]
+RewriteRule ^live$ api/live.php [NC,L]
+RewriteRule ^news$ api/news.php [NC,L]
+RewriteRule ^nrc$ api/nrc.php [NC,L]
+RewriteRule ^radio_category_list$ api/radio_category_list.php [NC,L]
+RewriteRule ^radio$ api/radio.php [NC,L]
+RewriteRule ^schedule_category_list$ api/schedule_category_list.php [NC,L]
+RewriteRule ^schedule$ api/schedule.php [NC,L]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 

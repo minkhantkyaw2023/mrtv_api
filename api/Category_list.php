@@ -10,11 +10,10 @@ $post_arr = array();
 $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
 
-
-   //to retrieve post list
+   //to retrieve category list
 $post_sql = $post->get_category_list();
 $post_num = $post_sql->rowCount();
-  if($post_num > 0 ) // check post
+  if($post_num > 0 ) // check category list
   {
     while ($row_post = $post_sql->fetch(PDO::FETCH_ASSOC)){
       extract($row_post); 
@@ -23,17 +22,16 @@ $post_num = $post_sql->rowCount();
 
       $post_item = array(
         "tid" => $tid,
-        "name" => $name
-       );
+        "name" => $name);
 
       array_push($post_arr, $post_item);
-}
+    }
     $records = array(
           "status" => true,
           "message" => "success",
          "Category_list" => $post_arr
         );
-    }
+  }
     else{
       $records = array(
         "status" => false,

@@ -2,12 +2,49 @@ RewriteEngine On
 #for removing all php file extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^category_list$ api/category_list.php [NC,L]
-RewriteRule ^live$ api/live.php [NC,L]
-RewriteRule ^news$ api/news.php [NC,L]
-RewriteRule ^nrc$ api/nrc.php [NC,L]
-RewriteRule ^radio_category_list$ api/radio_category_list.php [NC,L]
-RewriteRule ^radio$ api/radio.php [NC,L]
-RewriteRule ^schedule_category_list$ api/schedule_category_list.php [NC,L]
+
+# News api routes
+RewriteRule ^local-news$ api/news.php?category_id=274 [NC,L]
+RewriteRule ^world-news$ api/news.php?category_id=165 [NC,L]
+RewriteRule ^national-news$ api/news.php?category_id=1189 [NC,L]
+RewriteRule ^speech$ api/news.php?category_id=164 [NC,L]
+RewriteRule ^current-affairs$ api/news.php?category_id=474 [NC,L]
+RewriteRule ^business$ api/news.php?category_id=167 [NC,L]
+RewriteRule ^youth$ api/news.php?category_id=298 [NC,L]
+RewriteRule ^health$ api/news.php?category_id=168 [NC,L]
+RewriteRule ^sport$ api/news.php?category_id=172 [NC,L]
+RewriteRule ^entertainment$ api/news.php?category_id=173 [NC,L]
+RewriteRule ^travelouge$ api/news.php?category_id=171 [NC,L]
+RewriteRule ^agriculture$ api/news.php?category_id=188 [NC,L]
+RewriteRule ^documentary$ api/news.php?category_id=189 [NC,L]
+RewriteRule ^election$ api/news.php?category_id=1150 [NC,L]
+RewriteRule ^political$ api/news.php?category_id=229 [NC,L]
+RewriteRule ^education$ api/news.php?category_id=169 [NC,L]
+RewriteRule ^asean$ api/news.php?category_id=297 [NC,L]
+RewriteRule ^people-talk$ api/news.php?category_id=182 [NC,L]
+RewriteRule ^covid-19$ api/news.php?category_id=1131 [NC,L]
+RewriteRule ^tv-series$ api/tv-series.php [NC,L]
+
+RewriteRule ^nrc-program$ api/nrc.php [NC,L]
+
+# Radio api routes
+RewriteRule ^news&interview$ api/radio.php?category_id=195 [NC,L]
+RewriteRule ^national-races$ api/radio.php?category_id=216 [NC,L]
+RewriteRule ^radio-news$ api/radio.php?category_id=215 [NC,L]
+RewriteRule ^radio-programs$ api/radio.php?category_id=217 [NC,L]
+RewriteRule ^radio-schedule$ api/radio.php?category_id=214 [NC,L]
+
+# Schedule api routes
 RewriteRule ^schedule$ api/schedule.php [NC,L]
+RewriteRule ^farmer$ api/schedule.php?category_id=225 [NC,L]
+RewriteRule ^hluttaw$ api/schedule.php?category_id=224 [NC,L]
+RewriteRule ^mrtv$ api/schedule.php?category_id=223 [NC,L]
+RewriteRule ^nrc$ api/schedule.php?category_id=226 [NC,L]
+
+RewriteRule ^category_list$ api/category_list.php [NC,L]
+RewriteRule ^news$ /api/news.php [NC,L]
+RewriteRule ^live$ api/live.php [NC,L]
+RewriteRule ^radio_category_list$ api/radio_category_list.php [NC,L]
+RewriteRule ^schedule_category_list$ api/schedule_category_list.php [NC,L]
+
 RewriteRule ^([^\.]+)$ $1.php [NC,L]

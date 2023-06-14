@@ -56,7 +56,7 @@ class Post
     public function get_total_catlist($category_id)
     {
         $query = "SELECT COUNT(*) as totalrecords FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
-        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id";
+        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id ";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -69,12 +69,19 @@ class Post
         return $row['totalrecords'];
     }
     //to retrieve news
-    public function get_content_category($begin, $row_per_page, $category_id)
+    public function get_content_category($begin, $row_per_page, $category_id, $keyword)
     {
 
         $query = "SELECT nd.nid, nd.title FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
-        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id ORDER BY nd.created DESC LIMIT $begin,$row_per_page";
+        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id";
 
+        if (isset($keyword)) {
+            $query .= " AND nd.title LIKE '%$keyword%'";
+        }
+
+        if (isset($begin) && isset($row_per_page)) {
+            $query .= " ORDER BY nd.created DESC LIMIT $begin,$row_per_page";
+        }
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         //echo $query;        
@@ -266,4 +273,6 @@ class Post
             return null;
         }
     }
+
+   
 }

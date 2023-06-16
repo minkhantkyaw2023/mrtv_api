@@ -26,7 +26,8 @@ $post_item = array();
 for ($i = 0; $i < 5; $i++) {
   $post_item = array(
     "title" => $title[$i],
-    "url" => $url[$i]);
+    "url" => $url[$i]
+  );
 
   array_push($post_arr, $post_item);
 }

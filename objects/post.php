@@ -18,7 +18,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -36,7 +36,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = NEWS_IMG_URL . rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -101,7 +101,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = RADIO_IMG_URL . rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -118,7 +118,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = RADIO_AUDIO_URL . rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -174,7 +174,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = SCHEDULE_IMG_URL . rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -219,7 +219,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = NRC_IMG_URL . rawurldecode(basename($row['filename']));
             return $filename;
         } else {
             return null;
@@ -267,7 +267,7 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = URL . $row['filename'];
+            $filename = TV_SERIES_IMG_URL . rawurlencode(basename($row['filename']));
             return $filename;
         } else {
             return null;

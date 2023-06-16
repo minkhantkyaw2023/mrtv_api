@@ -59,7 +59,7 @@ if ($pageno > $total_pages) {
         "nid" => $nid,
         "title" => $title,
         "image" => $img,
-        "video" => $video,
+        "video" => TV_SERIES_VIDEO_URL. $video,
         "body" => $body
       );
 

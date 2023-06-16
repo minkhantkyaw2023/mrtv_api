@@ -61,7 +61,7 @@ if ($pageno > $total_pages) {
         "nid" => $nid,
         "title" => $title,
         "image" => $img,
-        "video" => $video
+        "video" => NRC_VIDEO_URL. $video
       );
 
       array_push($post_arr, $post_item);

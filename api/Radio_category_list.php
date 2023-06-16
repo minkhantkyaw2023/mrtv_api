@@ -9,7 +9,7 @@ $post = new Post($db);
 $post_arr = array();
 $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
-$program_id = isset($data->program_id) ? $data->program_id : '';
+
 
 //to retrieve radio program list
 $post_sql = $post->get_radio_program();

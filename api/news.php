@@ -60,7 +60,7 @@ if ($pageno > $total_pages) {
       $post_item = array(
         "nid" => $nid,
         "title" => $title,
-        "video" => $video,
+        "video" => NEWS_VIDEO_URL.$video,
         "image" => $img,
         "body" => $body
       );

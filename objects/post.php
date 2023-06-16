@@ -9,17 +9,17 @@ class Post
         $this->conn = $db;
     }
     //retrieve video
-    public function get_video($nid)
+    public function get_news_video($nid)
     {
-        $query = "SELECT fm.filename as filename FROM `node__field_news_video_file_upload` as vf, `file_managed` as
+        $query = "SELECT fm.uri as URL FROM `node__field_news_video_file_upload` as vf, `file_managed` as
          fm WHERE vf.entity_id = $nid AND vf.field_news_video_file_upload_target_id = fm.fid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = NEWS_VIDEO_URL.rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -29,15 +29,15 @@ class Post
     //to retrieve news images
     public function get_img($nid)
     {
-        $query = "SELECT fm.filename FROM `node_field_data` as nd, `node__field_news_image` as fi, `file_managed` as 
+        $query = "SELECT fm.uri AS URL FROM `node_field_data` as nd, `node__field_news_image` as fi, `file_managed` as 
         fm WHERE fi.entity_id = $nid AND fi.field_news_image_target_id = fm.fid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = NEWS_IMG_URL . rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = NEWS_IMG_URL . rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -94,15 +94,15 @@ class Post
     //get radio image files
     public function get_radio_img($nid)
     {
-        $query = "SELECT fm.filename FROM `node_field_data` as nd, `node__field_radio_image` as fri, `file_managed` as fm 
+        $query = "SELECT fm.uri AS URL FROM `node_field_data` as nd, `node__field_radio_image` as fri, `file_managed` as fm 
         WHERE fri.entity_id =nd.nid AND fri.field_radio_image_target_id = fm.fid AND nd.nid=$nid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = RADIO_IMG_URL . rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = RADIO_IMG_URL.rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -111,15 +111,15 @@ class Post
     public function get_radio_audio($nid)
     {
 
-        $query = "SELECT fm.filename as filename FROM `node__field_audio_file` as af , `file_managed` as fm WHERE af.entity_id = $nid AND 
+        $query = "SELECT fm.uri as URL FROM `node__field_audio_file` as af , `file_managed` as fm WHERE af.entity_id = $nid AND 
         af.field_audio_file_target_id = fm.fid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = RADIO_AUDIO_URL . rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = RADIO_AUDIO_URL . rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -167,15 +167,15 @@ class Post
     public function get_schedule_img($nid)
     {
 
-        $query = "SELECT fm.filename as filename FROM `node_field_data` as nd, `node__field_schedule_photo` as fri, `file_managed` as fm 
+        $query = "SELECT fm.uri as URL FROM `node_field_data` as nd, `node__field_schedule_photo` as fri, `file_managed` as fm 
         WHERE fri.entity_id =nd.nid AND fri.field_schedule_photo_target_id = fm.fid AND nd.nid=$nid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = SCHEDULE_IMG_URL . rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = SCHEDULE_IMG_URL . rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -212,15 +212,31 @@ class Post
     //to retrieve nrc image
     public function get_nrc_image($nid)
     {
-        $query = "SELECT fm.filename as filename FROM `node_field_data` as nd, `node__field_nrc_image` as ni, `file_managed` as fm 
+        $query = "SELECT fm.uri as URL FROM `node_field_data` as nd, `node__field_nrc_image` as ni, `file_managed` as fm 
         WHERE ni.entity_id =nd.nid AND ni.field_nrc_image_target_id = fm.fid AND nd.nid=$nid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = NRC_IMG_URL . rawurldecode(basename($row['filename']));
-            return $filename;
+            $URL = NRC_IMG_URL . rawurldecode(basename($row['URL']));
+            return $URL;
+        } else {
+            return null;
+        }
+    }
+
+    public function get_nrc_video($nid)
+    {
+        $query = "SELECT fm.uri as URL FROM `node__field_news_video_file_upload` as vf, `file_managed` as
+         fm WHERE vf.entity_id = $nid AND vf.field_news_video_file_upload_target_id = fm.fid";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num_row = $stmt->rowCount();
+        if ($num_row > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $URL = NRC_VIDEO_URL.rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }
@@ -260,15 +276,31 @@ class Post
     //to retrieve tv-series image
     public function get_tv_series_image($nid)
     {
-        $query = "SELECT fm.filename as filename FROM `node_field_data` as nd, `node__field_program_image` as ni, `file_managed` as fm 
+        $query = "SELECT fm.uri as URL FROM `node_field_data` as nd, `node__field_program_image` as ni, `file_managed` as fm 
         WHERE ni.entity_id =nd.nid AND ni.field_program_image_target_id = fm.fid AND nd.nid=$nid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $filename = TV_SERIES_IMG_URL . rawurlencode(basename($row['filename']));
-            return $filename;
+            $URL = TV_SERIES_IMG_URL . rawurlencode(basename($row['URL']));
+            return $URL;
+        } else {
+            return null;
+        }
+    }
+
+    public function get_tv_series_video($nid)
+    {
+        $query = "SELECT fm.uri as URL FROM `node__field_news_video_file_upload` as vf, `file_managed` as
+         fm WHERE vf.entity_id = $nid AND vf.field_news_video_file_upload_target_id = fm.fid";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num_row = $stmt->rowCount();
+        if ($num_row > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $URL = TV_SERIES_VIDEO_URL.rawurldecode(basename($row['URL']));
+            return $URL;
         } else {
             return null;
         }

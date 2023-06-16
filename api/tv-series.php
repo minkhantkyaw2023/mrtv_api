@@ -48,7 +48,7 @@ if ($pageno > $total_pages) {
       extract($row_post);
       $nid = $row_post['nid'];
       $title = $row_post['title'];
-      $post_sqlv = $post->get_video($nid);
+      $post_sqlv = $post->get_tv_series_video($nid);
       $video = $post_sqlv;
       $post_sqli = $post->get_tv_series_image($nid);
       $img = $post_sqli;
@@ -59,7 +59,7 @@ if ($pageno > $total_pages) {
         "nid" => $nid,
         "title" => $title,
         "image" => $img,
-        "video" => TV_SERIES_VIDEO_URL. $video,
+        "video" => $video,
         "body" => $body
       );
 

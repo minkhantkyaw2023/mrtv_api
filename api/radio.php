@@ -48,6 +48,7 @@ if ($pageno > $total_pages) {
       extract($row_post);
       $nid = $row_post['nid'];
       $title = $row_post['title'];
+      $date = date('M,d,y',$row_post['created']);
       $post_sqla = $post->get_radio_audio($nid);
       $audio = $post_sqla;
       $post_sqli = $post->get_radio_img($nid);
@@ -58,6 +59,7 @@ if ($pageno > $total_pages) {
       $post_item = array(
         "nid" => $nid,
         "title" => $title,
+        "posted_date" => $date,
         "image" => $img,
         "audio" => $audio,
         "body" => $body

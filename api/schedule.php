@@ -49,11 +49,13 @@ if ($pageno > $total_pages) {
       extract($row_post);
       $nid = $row_post['nid'];
       $title = $row_post['title'];
+      $date = date('M,d,y',$row_post['created']);
       $post_sqli = $post->get_schedule_img($nid);
       $img = $post_sqli;
 
       $post_item = array(
         "nid" => $nid,
+        "posted_date" => $date,
         "title" => $title,
         "image" => $img
       );

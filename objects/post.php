@@ -72,7 +72,7 @@ class Post
     public function get_content_category($begin, $row_per_page, $category_id, $keyword)
     {
 
-        $query = "SELECT nd.nid, nd.title FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
+        $query = "SELECT nd.nid, nd.title,nd.created FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
         WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id";
 
         if (isset($keyword)) {
@@ -167,7 +167,7 @@ class Post
     public function get_schedule_img($nid)
     {
 
-        $query = "SELECT fm.uri as URL FROM `node_field_data` as nd, `node__field_schedule_photo` as fri, `file_managed` as fm 
+        $query = "SELECT fm.uri,fm.created as URL FROM `node_field_data` as nd, `node__field_schedule_photo` as fri, `file_managed` as fm 
         WHERE fri.entity_id =nd.nid AND fri.field_schedule_photo_target_id = fm.fid AND nd.nid=$nid";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -200,7 +200,7 @@ class Post
     //to retrieve nrc id and title
     public function get_nrc($begin, $row_per_page)
     {
-        $query = "SELECT nid,title  FROM `node_field_data` WHERE `type`='nrc_program' ORDER BY created DESC LIMIT $begin,$row_per_page";
+        $query = "SELECT nid,title,created  FROM `node_field_data` WHERE `type`='nrc_program' ORDER BY created DESC LIMIT $begin,$row_per_page";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         //echo $query;        
@@ -264,7 +264,7 @@ class Post
     //to retrieve tv-series id and title
     public function get_tv_series($begin, $row_per_page)
     {
-        $query = "SELECT nid,title  FROM `node_field_data` WHERE `type`='program' ORDER BY created DESC LIMIT $begin,$row_per_page";
+        $query = "SELECT nid,title,created  FROM `node_field_data` WHERE `type`='program' ORDER BY created DESC LIMIT $begin,$row_per_page";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         //echo $query;        

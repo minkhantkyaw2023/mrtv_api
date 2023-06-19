@@ -50,6 +50,7 @@ if ($pageno > $total_pages) {
       extract($row_post);
       $nid = $row_post['nid'];
       $title = $row_post['title'];
+      $date = date('M,d,y',$row_post['created']);
       $post_sqlv = $post->get_news_video($nid);
       $video = $post_sqlv;
       $post_sqli = $post->get_img($nid);
@@ -59,6 +60,7 @@ if ($pageno > $total_pages) {
 
       $post_item = array(
         "nid" => $nid,
+        "posted_date" => $date,
         "title" => $title,
         "video" => $video,
         "image" => $img,

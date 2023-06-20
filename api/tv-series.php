@@ -9,10 +9,11 @@ $post = new Post($db);
 $post_arr = array();
 $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
+$keyword = isset($data->keyword) ? $data->keyword : "";
 
 //for pagination
 $pageno = isset($data->pageno) ? $data->pageno : "1";
-$total_records = $post->get_tv_series_total();
+$total_records = $post->get_tv_series_total($keyword);
 $total_pages = 1;
 $begin = 0;
 $row_per_page = 0;
@@ -40,7 +41,7 @@ if ($pageno > $total_pages) {
   );
 } else {
   //to retrieve tv-series list
-  $post_sql = $post->get_tv_series($begin, $row_per_page);
+  $post_sql = $post->get_tv_series($begin, $row_per_page,$keyword);
   $post_num = $post_sql->rowCount();
   if ($post_num > 0) // check post
   {

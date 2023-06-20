@@ -7,6 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^local-news$ api/news.php?category_id=274 [NC,L]
 RewriteRule ^world-news$ api/news.php?category_id=165 [NC,L]
 RewriteRule ^national-news$ api/news.php?category_id=1189 [NC,L]
+RewriteRule ^mrtv-special$ api/news.php?category_id=192 [NC,L]
 RewriteRule ^speech$ api/news.php?category_id=164 [NC,L]
 RewriteRule ^current-affairs$ api/news.php?category_id=474 [NC,L]
 RewriteRule ^business$ api/news.php?category_id=167 [NC,L]

@@ -13,7 +13,7 @@ $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 $keyword = isset($data->keyword) ? $data->keyword : "";
 //for pagination
 $pageno = isset($data->pageno) ? $data->pageno : "1";
-$total_records = $post->get_total_catlist($category_id);
+$total_records = $post->get_total_catlist($category_id,$keyword);
 $total_pages = 1;
 $begin = 0;
 $row_per_page = 0;

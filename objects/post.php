@@ -8,7 +8,7 @@ class Post
     {
         $this->conn = $db;
     }
-    
+
     //retrieve video
     public function get_news_video($nid)
     {
@@ -19,8 +19,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = NEWS_VIDEO_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = NEWS_VIDEO_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -38,8 +38,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = NEWS_IMG_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = NEWS_IMG_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -56,7 +56,7 @@ class Post
         return $stmt;
     }
     //to retrieve total count of news
-    public function get_total_catlist($category_id,$keyword)
+    public function get_total_catlist($category_id, $keyword)
     {
         $query = "SELECT COUNT(*) as totalrecords FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
         WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id ";
@@ -76,11 +76,11 @@ class Post
         return $row['totalrecords'];
     }
     //to retrieve news
-    public function get_content_category($begin, $row_per_page, $category_id, $keyword)
+    public function get_content_category($begin, $row_per_page, $category_id, $keyword, $timestamp)
     {
 
         $query = "SELECT nd.nid, nd.title,nd.created FROM `node_field_data` as nd, `taxonomy_index` as ti, `taxonomy_term_field_data` as tfd 
-        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id";
+        WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=$category_id AND nd.created < $timestamp";
 
         if (isset($keyword)) {
             $query .= " AND nd.title LIKE '%$keyword%'";
@@ -91,6 +91,7 @@ class Post
         }
         // prepare query statement
         $stmt = $this->conn->prepare($query);
+        echo $timestamp;
         //echo $query;        
         // execute query
         $stmt->execute();
@@ -108,8 +109,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = RADIO_IMG_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = RADIO_IMG_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -126,8 +127,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = RADIO_AUDIO_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = RADIO_AUDIO_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -183,8 +184,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['uri']);
-            $URL = SCHEDULE_IMG_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['uri']);
+            $URL = SCHEDULE_IMG_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -211,7 +212,7 @@ class Post
     }
 
     //to retrieve nrc id and title
-    public function get_nrc($begin, $row_per_page,$keyword)
+    public function get_nrc($begin, $row_per_page, $keyword)
     {
         $query = "SELECT nid,title,created  FROM `node_field_data` as nd WHERE `type`='nrc_program'";
         if (isset($keyword)) {
@@ -238,8 +239,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = NRC_IMG_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = NRC_IMG_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -255,8 +256,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = trim($row['URL'],'public://');
-            $URL = NRC_VIDEO_URL . str_replace(' ',"%20",$uri);
+            $uri = trim($row['URL'], 'public://');
+            $URL = NRC_VIDEO_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -287,7 +288,7 @@ class Post
     }
 
     //to retrieve tv-series id and title
-    public function get_tv_series($begin, $row_per_page,$keyword)
+    public function get_tv_series($begin, $row_per_page, $keyword)
     {
         $query = "SELECT nid,title,created  FROM `node_field_data` as nd WHERE `type`='program'";
         if (isset($keyword)) {
@@ -314,8 +315,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = TV_SERIES_IMG_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = TV_SERIES_IMG_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;
@@ -331,8 +332,8 @@ class Post
         $num_row = $stmt->rowCount();
         if ($num_row > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $uri = str_replace('public://','',$row['URL']);
-            $URL = TV_SERIES_VIDEO_URL . str_replace(' ',"%20",$uri);
+            $uri = str_replace('public://', '', $row['URL']);
+            $URL = TV_SERIES_VIDEO_URL . str_replace(' ', "%20", $uri);
             return $URL;
         } else {
             return null;

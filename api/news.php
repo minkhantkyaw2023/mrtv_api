@@ -11,6 +11,8 @@ $category_arr = array();
 $data = json_decode(file_get_contents("php://input"));
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
 $keyword = isset($data->keyword) ? $data->keyword : "";
+$date = isset($date->data) ? $data -> data : "";
+
 //for pagination
 $pageno = isset($data->pageno) ? $data->pageno : "1";
 $total_records = $post->get_total_catlist($category_id,$keyword);
@@ -42,7 +44,7 @@ if ($pageno > $total_pages) {
     "records" => []
   );
 } else { //to retrieve news list by category
-  $post_sql = $post->get_content_category($begin, $row_per_page, $category_id,$keyword);
+  $post_sql = $post->get_content_category($begin, $row_per_page, $category_id,$keyword,$date);
   $post_num = $post_sql->rowCount();
   if ($post_num > 0) // check news
   {

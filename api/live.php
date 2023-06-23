@@ -8,10 +8,9 @@ include_once('../config/initialize.php');
 $post = new Post($db);
 $post_arr = array();
 $category_arr = array();
-$data = json_decode(file_get_contents("php://input"));
 
 //data array
-$title = array('MRTV_HD', 'MITV', 'MRTV_NEWS', 'MRTV_Sport', 'MRTV_Sport');
+$title = array('MRTV HD', 'MITV', 'MRTV NEWS', 'MRTV Sport', 'MRTV Radio');
 $url = array(
   'https://player.twitch.tv/?channel=livestreamingmrtv&parent=mrtv.gov.mm',
   'https://player.twitch.tv/?channel=mitvlivestream&parent=mrtv.gov.mm',

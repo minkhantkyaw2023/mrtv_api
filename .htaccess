@@ -37,10 +37,6 @@ RewriteRule ^radio-schedule$ api/radio.php?category_id=214 [NC,L]
 
 # Schedule api routes
 RewriteRule ^schedule$ api/schedule.php [NC,L]
-RewriteRule ^farmer$ api/schedule.php?category_id=225 [NC,L]
-RewriteRule ^hluttaw$ api/schedule.php?category_id=224 [NC,L]
-RewriteRule ^mrtv$ api/schedule.php?category_id=223 [NC,L]
-RewriteRule ^nrc$ api/schedule.php?category_id=226 [NC,L]
 
 RewriteRule ^category_list$ api/category_list.php [NC,L]
 RewriteRule ^news$ /api/news.php [NC,L]

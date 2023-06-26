@@ -10,46 +10,46 @@ $post_arr = array();
 $category_arr = array();
 
 //data array
-$title = array('Speech', 'Current_news', 'Business_news', 'Youth', 'Health','Sports','Travel','Agriculture','Documentary','Election','Discussion','Education','Asean','Movies/TV_series','Special','Significant_days','Covid_19','Ethnic');
+$title = array('Speech', 'Current News', 'Business News', 'Youth', 'Health', 'Sports', 'Travel', 'Agriculture', 'Documentary', 'Election', 'Discussion', 'Education', 'Asean', 'Movies/TV Series', 'Special', 'Significant Days', 'Covid-19', 'Ethnic');
 $url = array(
-  'https://mrtv.gov.mm/en/speech',
-  'https://mrtv.gov.mm/index.php/en/current-affairs',
-  'https://mrtv.gov.mm/index.php/en/business',
-  'https://mrtv.gov.mm/index.php/en/youth',
-  'https://mrtv.gov.mm/index.php/en/health',
-  'https://mrtv.gov.mm/index.php/en/sport',
-  'https://mrtv.gov.mm/index.php/en/travelogue',
-  'https://mrtv.gov.mm/index.php/en/agriculture',
-  'https://mrtv.gov.mm/index.php/en/documentary',
-  'https://mrtv.gov.mm/index.php/en/election',
-  'https://mrtv.gov.mm/en/political',
-  'https://mrtv.gov.mm/en/education',
-  'https://mrtv.gov.mm/en/asean',
-  'https://mrtv.gov.mm/en/tv-series',
-  'https://mrtv.gov.mm/en/MRTV-special',
-  'https://mrtv.gov.mm/en/myanmar-significance-days',
-  'https://mrtv.gov.mm/en/covid-19',
-  'https://mrtv.gov.mm/mm/nrc-program'
+  MRTVapi.'speech',
+  MRTVapi.'current-affairs',
+  MRTVapi.'business',
+  MRTVapi.'youth',
+  MRTVapi.'health',
+  MRTVapi.'sport',
+  MRTVapi.'travelogue',
+  MRTVapi.'agriculture',
+  MRTVapi.'documentary',
+  MRTVapi.'election',
+  MRTVapi.'political',
+  MRTVapi.'education',
+  MRTVapi.'asean',
+  MRTVapi.'tv-series',
+  MRTVapi.'MRTV-special',
+  MRTVapi.'myanmar-significance-days',
+  MRTVapi.'covid-19',
+  MRTVapi.'nrc-program'
 );
 $img = array(
-  '../img/Speech_Program_Program_for_You.png',
-  '../img/Current_Program_Program_for_You.png',
-  '../img/Business_Program_Program_for_You.jpg',
-  '../img/Youth_Program_Program_for_You.png',
-  '../img/Health_Program_Program_for_You.png',
-  '../img/Sports_Program_Program_for_You.png',
-  '../img/Travel_Program_Program_for_You.png',
-  '../img/Agriculture_Program_Program_for_You.jpg',
-  '../img/Documentary_Program_Program_for_You.png',
-  '../img/Election_Program_Program_for_You.png',
-  '../img/Disscussion_Program_Program_for_You.png',
-  '../img/Education_Program_Program_for_You.png',
-  '../img/ASEAN_Program_Program_for_You.png',
-  '../img/Movie,TV_Series_Program_Program_for_You.jpg',
-  '../img/Special_Program_Program_for_You.png',
-  '../img/Significant_Day_Program_Program_for_You.png',
-  '../img/Covid_19_Program_Program_for_You.png',
-  '../img/Ethnic_Program_Program_for_You.png'
+  MRTVapi.'img/speech_program.png',
+  MRTVapi.'img/current_program.png',
+  MRTVapi.'img/business_program.jpg',
+  MRTVapi.'img/youth_program.png',
+  MRTVapi.'img/health_program.png',
+  MRTVapi.'img/sports_program.png',
+  MRTVapi.'img/travel_program.png',
+  MRTVapi.'img/agriculture_program.jpg',
+  MRTVapi.'img/documentary_program.png',
+  MRTVapi.'img/election_program.png',
+  MRTVapi.'img/disscussion_program.png',
+  MRTVapi.'img/education_program.png',
+  MRTVapi.'img/asean_program.png',
+  MRTVapi.'img/movietv_series.jpg',
+  MRTVapi.'img/special_program.png',
+  MRTVapi.'img/significant_day_program.png',
+  MRTVapi.'img/covid_19_program.png',
+  MRTVapi.'img/ethnic_program.png'
 );
 
 //to retrieve array data

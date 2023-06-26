@@ -24,12 +24,13 @@ RewriteRule ^education$ api/news.php?category_id=169 [NC,L]
 RewriteRule ^asean$ api/news.php?category_id=297 [NC,L]
 RewriteRule ^people-talk$ api/news.php?category_id=182 [NC,L]
 RewriteRule ^covid-19$ api/news.php?category_id=1131 [NC,L]
+RewriteRule ^myanmar-significance-days$ api/news.php?category_id=347 [NC,L]
 RewriteRule ^tv-series$ api/tv-series.php [NC,L]
 
 RewriteRule ^nrc-program$ api/nrc.php [NC,L]
 
 # Radio api routes
-RewriteRule ^news&interview$ api/radio.php?category_id=195 [NC,L]
+RewriteRule ^news-interview$ api/radio.php?category_id=195 [NC,L]
 RewriteRule ^national-races$ api/radio.php?category_id=216 [NC,L]
 RewriteRule ^radio-news$ api/radio.php?category_id=215 [NC,L]
 RewriteRule ^radio-programs$ api/radio.php?category_id=217 [NC,L]
@@ -37,6 +38,13 @@ RewriteRule ^radio-schedule$ api/radio.php?category_id=214 [NC,L]
 
 # Schedule api routes
 RewriteRule ^schedule$ api/schedule.php [NC,L]
+#RewriteRule ^farmer$ api/schedule.php?category_id=225 [NC,L]
+#RewriteRule ^hluttaw$ api/schedule.php?category_id=224 [NC,L]
+#RewriteRule ^mrtv$ api/schedule.php?category_id=223 [NC,L]
+#RewriteRule ^nrc$ api/schedule.php?category_id=226 [NC,L]
+
+# Program For You api routes
+RewriteRule ^programforyou$ api/program_for_you.php [NC,L]
 
 RewriteRule ^category_list$ api/category_list.php [NC,L]
 RewriteRule ^news$ /api/news.php [NC,L]

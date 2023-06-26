@@ -12,6 +12,7 @@ defined('NRC_IMG_URL')? null : define('NRC_IMG_URL',"https://mrtv.gov.mm/sites/d
 defined('NRC_VIDEO_URL')? null : define('NRC_VIDEO_URL',"https://mrtv.gov.mm/sites/default/files/");
 defined('TV_SERIES_IMG_URL')? null : define('TV_SERIES_IMG_URL',"https://mrtv.gov.mm/sites/default/files/styles/mrtv_three_col/public/");
 defined('TV_SERIES_VIDEO_URL')? null : define('TV_SERIES_VIDEO_URL',"https://mrtv.gov.mm/sites/default/files/");
+defined('MRTVapi')? null : define('MRTVapi',"https://mrtv.gov.mm/mrtvapi/");
 
 // load the config file first
 require_once(CONFIG_PATH.DS."config.php");

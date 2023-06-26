@@ -181,8 +181,6 @@ class Post
         return $stmt;
     }
 
-
-
     public function schedule_mrtv()
     {
         $query = "SELECT nd.nid, nd.title,nd.created FROM `node_field_data` as nd, `taxonomy_index` as ti, 
@@ -226,6 +224,19 @@ class Post
     {
         $query = "SELECT nd.nid, nd.title,nd.created FROM `node_field_data` as nd, `taxonomy_index` as ti, 
         `taxonomy_term_field_data` as tfd WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=226
+        ORDER BY nd.created DESC LIMIT 0,1";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        //echo $query;        
+        // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function schedule_radio()
+    {
+        $query = "SELECT nd.nid, nd.title,nd.created FROM `node_field_data` as nd, `taxonomy_index` as ti, 
+        `taxonomy_term_field_data` as tfd WHERE ti.tid = tfd.tid AND nd.nid = ti.nid AND tfd.tid=214
         ORDER BY nd.created DESC LIMIT 0,1";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
